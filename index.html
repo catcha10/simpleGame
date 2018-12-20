@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple Dragon Games</title>
+    <script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+    <div id="app" class="app" >
+
+
+      <section class="row" >
+        <div class="col-xs-12" ><h2>Dragon Game</h2></div>
+      </section>
+      <section class="gamesInner" v-if="gameOn" >
+        <div class="row" >
+          <div class="col-xs-12 col-sm-6 col-md-12 leftSide" >
+            
+            <div class="healthArea" >
+              <div class="row" >
+                <div class="col-xs-6">
+                  <h3>Player</h3>
+                
+                  <div class="progress vertical">
+                    <div id="dynamic" class="progress-bar progress-bar-striped active" :class="[( playerHealth >= 60? 'progress-bar-success' : ''),(
+                      (playerHealth < 60 && playerHealth >= 20)?'progress-bar-warning':''),(playerHealth < 20?'progress-bar-danger':'')]"  role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" v-bind:style="{ width: playerHealth + '%'}">
+                      <!--((playerHealth < 60 && playerHealth >= 20)?'progress-bar-warning':'')-->
+                      <span class="current-progress" >{{playerHealth}}%</span>
+                    </div>
+                  </div>
+
+
+                 </div>
+                <div class="col-xs-6">
+                  <h3>Dragon</h3>
+                  
+                  <div class="progress vertical ">
+                    <div id="dynamic" class="progress-bar progress-bar-striped active" :class="[( dragonHealth >= 60? 'progress-bar-success' : ''),(
+                      (dragonHealth < 60 && dragonHealth >= 20)?'progress-bar-warning':''),(dragonHealth < 20?'progress-bar-danger':'')]" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" v-bind:style="{ width: dragonHealth + '%'}">
+                      <span class="current-progress">{{dragonHealth}}%</span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="row controls" >
+                <div class="col-xs-3" ><button @click="attack" class="glowBtn" :disabled="(dragonHealth <= 0)||(playerHealth<=0)" >Attack</button></div>
+                <div class="col-xs-3" ><button @click="blast" class="glowBtn" :disabled="(dragonHealth<=0)||(playerHealth<=0)" >Blast</button></div>
+                <div class="col-xs-3" ><button @click="heal" class="glowBtn" :disabled="(dragonHealth<=0)||(playerHealth<=0)"  >Heal</button></div>
+                <div class="col-xs-3" ><button @click="giveUp" class="glowBtn" >Give Up</button></div>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-12 rightSide" >
+              
+              <div class="log" v-if="commentaryList.length">
+                <h3>Game Commentary</h3>
+                <ul>
+                  <li v-for="itm in commentaryList"  >{{itm}}</li>
+                </ul>
+              </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="row" v-else >
+        <div class="col-xs-12" ><button class="btnClass glowBtn" @click="startGameFunc"   >Start Game</button></div>
+      </section>
+      <!--gamesInner-->
+
+
+       <!--<section class="sectionCls" >
+           
+          <div class="row" >
+            <div class="col-xs-12 col-sm-6 col-md-8" >
+                
+                <div class="gameInner" v-if="isActive" >
+                    <div class="row" >
+                        <div class="col-xs-12" ><h2>Simple Games</h2></div>
+                        <div class="col-xs-6" >
+                            <h4>Me</h4>
+                            <div>{{playerHealth}}</div>
+                        </div>
+                        <div class="col-xs-6" >
+                            <h4>Moster</h4>
+                            <div>{{monsterHealth}}</div>
+                        </div>
+                   </div>
+               </div>
+               <div class="controlsArea" v-if="showControl" >
+                 <div class="row" >
+                   <div class="col-xs-3" ><button @click="attackFunc" >Attack</button></div>
+                   <div class="col-xs-3" ><button @click="powerAttackFunc" >Power Attack</button></div>
+                   <div class="col-xs-3" ><button @click="healFunc" >Heal</button></div>
+                   <div class="col-xs-3" ><button @click="giveUpFunc" >Give Up</button></div>
+                 </div>
+              </div>
+
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4" >
+                
+                <section class="log" style="max-height:200px;overflow-y:auto" >
+                  <ul>
+                    <li v-for="itm in log" >{{itm}}</li>
+                  </ul>
+                </section>
+
+            </div>
+          </div>
+  
+          <button @click="startGame" v-if="disableBtn" >Start Game</button>
+       </section>-->
+    </div>
+    <script src="js/app2.js"></script>
+</body>
+
+</html>
