@@ -106,24 +106,7 @@ var app = new Vue({
 			} 
 	 	},
 	 	chkStatus:function(){
-	 		/*let bardefaultClass = "progress-bar progress-bar-striped active";
-	 		if(this.playerHealth>=50){
-	 			this.playerBarClass = bardefaultClass + " progress-bar-success";
-	 		}else if(this.playerHealth<50 && this.playerHealth>20){
-	 			this.playerBarClass = bardefaultClass + " progress-bar-warning";
-	 		}else{
-	 			this.playerBarClass = bardefaultClass + " progress-bar-danger";
-	 		}
-
-	 		if(this.dragonHealth>=50){
-	 			this.dragonBarClass = bardefaultClass + " progress-bar-success";
-	 		}else if(this.dragonHealth<50 && this.dragonHealth>20){
-	 			this.dragonBarClass = bardefaultClass + " progress-bar-warning";
-	 		}else{
-	 			this.dragonBarClass = bardefaultClass + " progress-bar-danger";
-	 		}*/
-
-
+	 		
 	 		if(this.playerHealth<=0){
 	 			this.playerHealth = 0;
 	 			this.dragonHealth = this.curDragonVal; 
